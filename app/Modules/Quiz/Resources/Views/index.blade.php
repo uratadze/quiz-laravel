@@ -27,16 +27,18 @@
 </div>
 @extends('layouts.app')
 
+@auth()
+    <a href="{{ route('statistic') }}" style="margin: 2%">statistic</a>
+@endauth
 @section('content')
+
 @foreach (['danger', 'warning', 'success', 'info'] as $key)
     @if(Session::has($key))
         <p class="alert alert-{{ $key }}">{{ Session::get($key) }}</p>
     @endif
 @endforeach
 
-@auth()
-<a href="{{ route('statistic') }}" style="margin: 2%">statistic</a>
-@endauth
+
 
 @foreach($quizzes as $quiz)
     <div class="quiz">
